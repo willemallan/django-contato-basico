@@ -15,7 +15,7 @@ def contato(request):
             
             # valores
             site = 'SITE CONTATO'
-            destino = ['willemarf@gmail.com',]
+            destino = ['teste@teste.com.br',]
 
             nome = form.cleaned_data['nome']
             email = form.cleaned_data['email']
