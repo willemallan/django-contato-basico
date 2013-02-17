@@ -7,6 +7,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from contato.forms import ContatoForm
+from contato.models import Email
 
 def contato(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -15,12 +16,17 @@ def contato(request):
             
             # valores
             site = 'SITE CONTATO'
-            destino = ['teste@teste.com.br',]
+            destino = []
+
 
             nome = form.cleaned_data['nome']
             email = form.cleaned_data['email']
             assunto = form.cleaned_data['assunto']
             mensagem = form.cleaned_data['mensagem']
+
+            emails = Email.objects.all()
+            for e in emails:
+                destino.append(e.email)
             
             context = {
                 'site': site,

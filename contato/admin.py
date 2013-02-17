@@ -11,3 +11,11 @@ class ContatoAdmin(admin.ModelAdmin):
     list_per_page = 20
     
 admin.site.register(Contato, ContatoAdmin)
+
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email')
+    search_fields = ('nome', 'email')
+    save_on_top = True
+    list_per_page = 20  
+    
+admin.site.register(Email, EmailAdmin)
